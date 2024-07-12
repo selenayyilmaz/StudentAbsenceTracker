@@ -17,15 +17,15 @@ def create_excel_file():
     sheet['C1'] = "CI"
     sheet['D1'] = "Python"
     sheet['E1'] = "DM"
-    workbook.save("C:\\Users\\cfryl\\PycharmProjects\\Tracker\\attendance.xlsx")
+    workbook.save("C:\\Users\\****\\PycharmProjects\\Tracker\\attendance.xlsx")
 
 create_excel_file()
 
 def save_to_excel(mail,date,Ci,Py,Dm):
-    workbook = openpyxl.load_workbook("C:\\Users\\cfryl\\PycharmProjects\\Tracker\\attendance.xlsx")
+    workbook = openpyxl.load_workbook("C:\\Users\\****\\PycharmProjects\\Tracker\\attendance.xlsx")
     sheet = workbook.active
     sheet.append([mail, date, int(Ci), int(Py), int(Dm)])
-    workbook.save("C:\\Users\\cfryl\\PycharmProjects\\Tracker\\attendance.xlsx")
+    workbook.save("C:\\Users\\****\\PycharmProjects\\Tracker\\attendance.xlsx")
 
 def send_email(subject,body,to_email,sender_email,sender_password):
     message = EmailMessage()
@@ -49,7 +49,7 @@ def submit(mail_entry, date_entry, ci_entry, py_entry, dm_entry,sender_email,sen
         python = int(py_entry.get())
         dm = int(dm_entry.get())
     except ValueError:
-        tk.messagebox.showwarning("Dikkat","Devamsızlıklar sayı olmalıdır.")
+        tk.messagebox.showwarning("Warning","You should enter number for each textbox of courses.")
         return
 
     current_ci,current_python,current_dm = check_absences(mail)
@@ -62,27 +62,27 @@ def submit(mail_entry, date_entry, ci_entry, py_entry, dm_entry,sender_email,sen
 
     if ci >= 2:
         if ci == 2:
-            send_email("Dikkat", "CI dersi için sadece 1 devamsızlık hakkınız kaldı",mail,sender_email,sender_password)
+            send_email("Warning", "For the CI course, you only have one absence left.",mail,sender_email,sender_password)
         elif ci == 3:
-            send_email("Dikkat", "CI dersi için devamsızlık hakkınız kalmadı",mail,sender_email,sender_password)
+            send_email("Warning", "For the CI course, you have left no absence.",mail,sender_email,sender_password)
         elif ci > 3:
-            send_email("Dikkat","CI dersi için devamsızlıktan kaldınız. Derse girme hakkınız yoktur.",mail,sender_email,sender_password)
+            send_email("Warning","You have failed the CI course due to absences. You are not allowed to attend the class.",mail,sender_email,sender_password)
 
     if python >= 1:
         if python == 1:
-            send_email("Dikkat", "Python dersi için sadece 1 devamsızlık hakkınız kaldı",mail,sender_email,sender_password)
+            send_email("Warning", "For the Python course, you only have one absence left.",mail,sender_email,sender_password)
         elif python == 2:
-            send_email("Dikkat", "Python dersi için devamsızlık hakkınız kalmadı",mail,sender_email,sender_password)
+            send_email("Warning", "For the Python course, you have left no absence.",mail,sender_email,sender_password)
         elif python > 2:
-            send_email("Dikkat","Python dersi için devamsızlıktan kaldınız. Derse girme hakkınız yoktur.",mail,sender_email,sender_password)
+            send_email("Warning","You have failed the Python course due to absences. You are not allowed to attend the class.",mail,sender_email,sender_password)
 
     if dm >= 1:
         if dm == 1:
-            send_email("Dikkat", "DM dersi için sadece 1 devamsızlık hakkınız kaldı",mail,sender_email,sender_password)
+            send_email("Warning", "For the DM course, you only have one absence left.",mail,sender_email,sender_password)
         elif dm == 2:
-            send_email("Dikkat", "DM dersi için devamsızlık hakkınız kalmadı",mail,sender_email,sender_password)
+            send_email("Warning", "For the DM course, you have left no absence.",mail,sender_email,sender_password)
         elif dm > 2:
-            send_email("Dikkat","DM dersi için devamsızlıktan kaldınız. Derse girme hakkınız yoktur.",mail,sender_email,sender_password)
+            send_email("Warning","You have failed the DM course due to absences. You are not allowed to attend the class.",mail,sender_email,sender_password)
 
 
     mail_entry.delete(0, tk.END)
@@ -98,7 +98,7 @@ def submit(mail_entry, date_entry, ci_entry, py_entry, dm_entry,sender_email,sen
 
 
 def check_absences(mail):
-    workbook = openpyxl.load_workbook("C:\\Users\\cfryl\\PycharmProjects\\Tracker\\attendance.xlsx")
+    workbook = openpyxl.load_workbook("C:\\Users\\****\\PycharmProjects\\Tracker\\attendance.xlsx")
     sheet = workbook.active
 
     ci=0
